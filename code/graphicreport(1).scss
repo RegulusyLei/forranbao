@@ -1,0 +1,126 @@
+$toolbar-height:30px;
+$icon-fontsize: 20px;
+$table-height: 258px;
+
+.graphic-report {
+    width: 100%;
+    height: 100%;
+
+    .graphic {
+        background-color: bisque;
+        transition: height 0s;
+    }
+
+    .data-table {
+        // min-height: 230px;
+        transition: height 0s;
+        
+        .toolbar {
+            height: $toolbar-height;
+            background: var(--background-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0;
+            padding: 0 10px;
+
+            &:hover {
+                cursor: s-resize;
+            }
+            
+            .el-button {
+                width: $toolbar-height;
+                height: $toolbar-height;
+                border: none;
+                font-size: $icon-fontsize;
+                margin: 0;
+                padding: 0;
+                background-color: transparent;
+
+            }
+        }
+
+        .table {
+            height: calc( 100% - #{$toolbar-height} );
+
+            $td-height: 30px;
+            @mixin td-lineHeight {
+                height: $td-height;
+                line-height: $td-height;
+            }
+
+            /deep/ .el-table {
+                .el-table__header-wrapper .el-table__header .has-gutter tr {
+                    
+                    th {
+                        padding: 0;
+
+                        .cell {
+                           @include td-lineHeight;
+                        }
+                    }
+                }
+
+                .el-table__body-wrapper .el-table__body  {
+
+                    tbody {
+
+                        tr {
+                            
+                            td {
+                                padding: 0;
+
+                                .cell {
+                                    @include td-lineHeight;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .el-table__fixed {
+                    .el-table__fixed-header-wrapper {
+
+                        .el-table__header {
+
+                            thead {
+
+                                tr {
+
+                                    th {
+                                        padding: 0;
+
+                                        .cell {
+                                            @include td-lineHeight;
+                                        }
+                                    }
+                                }
+                            }
+
+                            
+                        }
+                    }
+
+                    .el-table__fixed-body-wrapper {
+                        
+                        .el-table__body {
+
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 0;
+
+                                        .cell {
+                                            @include td-lineHeight;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+    }
+}
